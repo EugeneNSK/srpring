@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="t1000construct" class="ru.javabegin.training.spring.impls.robot.ModelT1000">
+		<constructor-arg ref="sonyHand"/>
+		<constructor-arg ref="sonyLeg"/>
+		<constructor-arg ref="sonyHead"/>
+	</bean>
+	
+	<bean id="t1000property" class="ru.javabegin.training.spring.impls.robot.ModelT1000">
+			<property name="hand" ref="sonyHand"/>
+			<property name="leg" ref="sonyLeg"/>
+			<property name="head" ref="toshibaHead"/>
+	</bean>
+	
+	<bean id="t1000value" class="ru.javabegin.training.spring.impls.robot.ModelT1000">
+			<constructor-arg ref="sonyHand"/>
+			<constructor-arg ref="sonyLeg"/>
+			<constructor-arg ref="sonyHead"/>
+			<constructor-arg value="green"/>
+			<constructor-arg value="2017"/>
+			
+	</bean>
+
+	<!-- 
+		scope="singletone"  - один и тот же объект при запросе бина
+		scope="prototype"   - новый объект при запросе бина
+		
+		lazy-init="true"    - ленивая инициализация. Объект создается только при  обращении к бину 
+ 		
+ 	-->
+
+	<bean id="sonyHand" class="ru.javabegin.training.spring.impls.sony.SonyHand" lazy-init="true"/>
+	<bean id="sonyHead" class="ru.javabegin.training.spring.impls.sony.SonyHead" lazy-init="true"/>
+	<bean id="sonyLeg" class="ru.javabegin.training.spring.impls.sony.SonyLeg" lazy-init="true"/>
+
+	<bean id="toshibaHand" class="ru.javabegin.training.spring.impls.toshiba.ToshibaHand" lazy-init="true"/>
+	<bean id="toshibaHead" class="ru.javabegin.training.spring.impls.toshiba.ToshibaHead" lazy-init="true"/>
+	<bean id="toshibaLeg" class="ru.javabegin.training.spring.impls.toshiba.ToshibaLeg" lazy-init="true"/>
+
+
+	<bean id="t2000"
+		class="ru.javabegin.training.spring.impls.robot.ModelT2000" scope="prototype" lazy-init="true">
+			<constructor-arg ref="sonyHand"/>
+			<constructor-arg ref="sonyLeg"/>
+			<constructor-arg ref="sonyHead"/>
+			<constructor-arg value="blue"/>
+			<constructor-arg value="3017"/>
+	</bean>
+</beans>
