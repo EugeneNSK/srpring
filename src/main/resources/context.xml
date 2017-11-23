@@ -50,4 +50,13 @@
 			<constructor-arg value="blue"/>
 			<constructor-arg value="3017"/>
 	</bean>
+	
+	<bean id="t3000"
+		class="ru.javabegin.training.spring.impls.robot.ModelT2000" scope="prototype" lazy-init="true">
+			<constructor-arg ref="sonyHand"/>
+			<constructor-arg ref="sonyLeg"/>
+			<constructor-arg ref="sonyHead"/>
+			<constructor-arg value="blue"/>
+			<constructor-arg value="3017"/>
+	</bean>
 </beans>
